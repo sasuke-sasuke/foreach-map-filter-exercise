@@ -7,10 +7,9 @@ Examples:
 
 */
 function doubleValues(arr){
-    const newArr = arr.map(function(num){
-        return num * 2;
-    })
-    return newArr;
+    const doubled = [] 
+    arr.forEach((num) => doubled.push(num * 2));
+    return doubled;
 }
 
 /*
@@ -22,9 +21,9 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    return arr.filter(function(num){
-        return num % 2 === 0;
-    })
+    const onlyEvens = [];
+    arr.forEach((num) => (num % 2 === 0) ? onlyEvens.push(num): false ); 
+    return onlyEvens;
 }
 
 
@@ -38,7 +37,7 @@ Examples:
 */
 function showFirstAndLast(arr){
     const firstAndLast = [];
-    arr.forEach(function(word){
+    arr.forEach((word) => {
         const newWord = word[0] + word[word.length-1];
         firstAndLast.push(newWord);
     })
@@ -56,7 +55,7 @@ Examples:
 */
 function addKeyAndValue(arr,key,value){
     const newArr = [];
-    arr.forEach(function(obj){
+    arr.forEach((obj) => {
         obj[key] = value;
         newArr.push(obj);
     })
@@ -85,7 +84,7 @@ function isVowel(char){
 
 function vowelCount(str){
    const vowels = {};
-   Array.from(str).forEach(function(letter){
+   Array.from(str).forEach((letter) => {
     if(isVowel(letter)){
         if(vowels[letter] >= 1){
             vowels[letter] += 1;
@@ -106,9 +105,7 @@ Examples:
 */
 
 function doubleValuesWithMap(arr) {
-    return arr.map(function(num){
-        return num * 2;
-    });
+    return arr.map((num) => num * 2);
 };
 
 /*
@@ -120,9 +117,7 @@ Examples:
 */
 
 function valTimesIndex(arr){
-    return arr.map(function(num, i){
-        return num * i;
-    })
+    return arr.map((num, i) => num * i)
 }
 
 /*
@@ -133,9 +128,7 @@ Examples:
 */
 
 function extractKey(arr, key){
-    return arr.map(function(obj){
-        return obj[key];
-    })
+    return arr.map((obj) => obj[key])
 }
 
 /*
@@ -159,6 +152,7 @@ Examples:
 */
 
 function filterByValue(arr, key) {
+    return arr.filter((obj) => obj[key]);
 }
 
 /*
@@ -170,9 +164,8 @@ Examples:
 */
 
 function find(arr, searchValue) {
-    return arr.find(function(num){
-        return num === searchValue;
-    })
+    const findVal =  arr.filter((number) => (number === searchValue) ? number : undefined)
+    return findVal[0];
 }
 
 /*
@@ -198,6 +191,14 @@ Examples:
 */
 
 function removeVowels(str) {
+    const vowels = ['a', 'e', 'o', 'i', 'u'];
+    let newStr = '';
+    Array.from(str).filter((char) => {
+        let lowered = char.toLowerCase()
+        if(!(vowels.indexOf(lowered) !== -1)) return lowered;
+    }).forEach((letter) => newStr += letter);
+
+    return newStr.toLowerCase();
 }
 
 /*
